@@ -1,0 +1,32 @@
+:root {
+  --black: #111111;
+  --gray: #dddddd;
+}
+
+body {
+  display: flex;
+  margin-top: 100px;
+  justify-content: center;
+  color: var(--black);
+}
+
+.calendar > .header {
+  display: flex;
+  justify-content: center;
+}
+
+.calendar > .header > .arrow {
+  font-size: 1.7rem;
+  margin: 0.2rem 1.5rem;
+  cursor: pointer;
+  color: var(--gray);
+  transition: 0.3s;
+}
+
+.calendar > .header > .arrow:hover {
+  color: var(--black);
+}
+
+.calendar > .header > .date {
+  font-size: 2.5rem;
+}
