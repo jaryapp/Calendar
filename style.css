@@ -10,23 +10,40 @@ body {
   color: var(--black);
 }
 
-.calendar > .header {
+.calendar > .date-selector {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.calendar > .header > .arrow {
+.calendar > .date-selector > .arrow {
   font-size: 1.7rem;
-  margin: 0.2rem 1.5rem;
+  margin: 0 1rem;
   cursor: pointer;
   color: var(--gray);
   transition: 0.3s;
 }
 
-.calendar > .header > .arrow:hover {
+.calendar > .date-selector > .arrow:hover {
   color: var(--black);
 }
 
-.calendar > .header > .date {
+.calendar > .date-selector > .date {
   font-size: 2.5rem;
+}
+
+.calendar > .month {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.calendar > .month > .week {
+  display: flex;
+  justify-content: space-between;
+}
+
+.calendar > .month > .week > .day {
+  width: 80px;
+  text-align: center;
 }
