@@ -42,12 +42,12 @@ body {
   border-bottom: 1px solid var(--gray);
 }
 
-.calendar > .month > .week {
+.calendar .week {
   display: flex;
   justify-content: space-between;
 }
 
-.calendar > .month > .week > .day {
+.calendar .day {
   width: 70px;
   height: 50px;
   padding: 10px;
@@ -73,4 +73,8 @@ body {
 
 .next-month {
   color: var(--gray);
+}
+
+.today {
+  background: rgb(255, 248, 216);
 }
