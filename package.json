@@ -1,0 +1,24 @@
+{
+  "name": "Calendar",
+  "version": "1.0.0",
+  "description": "캘린더",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaryapp/Calendar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaryapp/Calendar/issues"
+  },
+  "homepage": "https://github.com/jaryapp/Calendar#readme",
+  "dependencies": {
+    "http-server": "^13.0.1"
+  }
+}
