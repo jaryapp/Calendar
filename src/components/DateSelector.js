@@ -6,8 +6,12 @@ class DateSelector {
   state = {
     selectDate: new Date(),
   };
-  constructor($target) {
-    this.$target = $target;
+  constructor({ $target, $parent, state }) {
+    this.$target = $target
+      ? $target
+      : htmlToDom(`<div class="date-selector"></div>`);
+    if (!$target) $parent.appendChild(this.$target);
+    this.state = state;
     this.setup();
     this.render();
   }

@@ -4,17 +4,16 @@ import Month from "./Month.js";
 class Calendar {
   $target;
   state;
-  constructor($target) {
-    this.$target = $target;
+  constructor({ $target, $parent, state }) {
+    this.$target = $target ? $target : htmlToDom(`<div id="calendar"></div>`);
+    if (!$target) $parent.appendChild(this.$target);
+    this.state = state;
     this.setup();
     this.render();
   }
   setup() {}
   template() {
-    return `
-    <div class="date-selector"></div>
-     <div class="month"></div>
-    `;
+    return ``;
   }
 
   setEvent() {}
@@ -27,11 +26,8 @@ class Calendar {
   render() {
     this.$target.innerHTML = this.template();
 
-    const $dateSelector = this.$target.querySelector(".date-selector");
-    new DateSelector($dateSelector);
-
-    const $month = this.$target.querySelector(".month");
-    new Month($month);
+    new DateSelector({ $parent: this.$target });
+    new Month({ $parent: this.$target });
 
     this.setEvent();
   }

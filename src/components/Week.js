@@ -34,7 +34,7 @@ class Week {
     for (const day of this.state.days) {
       new Day({ $parent: this.$target, state: { day } });
     }
-    if (this.$parent) this.setEvent();
+    this.setEvent();
   }
 }
 

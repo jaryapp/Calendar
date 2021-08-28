@@ -5,8 +5,10 @@ import { getMonth } from "../utils/month.js";
 class Month {
   $target;
   state = { selectDate: new Date(), weeks: [] };
-  constructor($target) {
-    this.$target = $target;
+  constructor({ $target, $parent, state }) {
+    this.$target = $target ? $target : htmlToDom(`<div class="month"></div>`);
+    if (!$target) $parent.appendChild(this.$target);
+    this.state = state;
     this.setup();
     this.render();
   }
