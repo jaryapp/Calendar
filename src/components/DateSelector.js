@@ -1,11 +1,10 @@
 import SelectDate from "../store/SelectDate.js";
-import { dateToYearMonth } from "../utils/dateFormat.js";
+import CurrentDate from "./CurrentDate.js";
+import { htmlToDom } from "../utils/htmlToDom.js";
 
 class DateSelector {
   $target;
-  state = {
-    selectDate: new Date(),
-  };
+  state = {};
   constructor({ $target, $parent, state }) {
     this.$target = $target
       ? $target
@@ -15,15 +14,11 @@ class DateSelector {
     this.setup();
     this.render();
   }
-  setup() {
-    SelectDate.subscribe((state) => {
-      this.setState({ selectDate: state.selectDate });
-    });
-  }
+  setup() {}
   template() {
     return `
       <div id="prev"> <i class="fas fa-arrow-left arrow"></i></div>
-      <div class="date">${dateToYearMonth(this.state.selectDate)}</div>
+      <div class="date"></div>
       <div id="next"> <i id="next" class="fas fa-arrow-right arrow"></i></div>
       `;
   }
@@ -48,6 +43,8 @@ class DateSelector {
 
   render() {
     this.$target.innerHTML = this.template();
+    const $date = this.$target.querySelector(".date");
+    new CurrentDate({ $target: $date });
     this.setEvent();
   }
 }

@@ -1,5 +1,6 @@
 import DateSelector from "./DateSelector.js";
 import Month from "./Month.js";
+import { htmlToDom } from "../utils/htmlToDom.js";
 
 class Calendar {
   $target;
