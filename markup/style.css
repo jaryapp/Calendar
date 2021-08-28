@@ -35,8 +35,6 @@ body {
 }
 
 #calendar > .month {
-  display: flex;
-  flex-direction: column;
   margin-top: 20px;
   border-right: 1px solid var(--gray);
   border-bottom: 1px solid var(--gray);

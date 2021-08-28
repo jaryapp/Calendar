@@ -1,6 +1,9 @@
 import Observable from "./Observable.js";
+const currentMonth = new Date();
+currentMonth.setDate(1);
+
 const defaultState = {
-  selectDate: new Date(),
+  selectDate: currentMonth,
 };
 
 class SelectDate extends Observable {
