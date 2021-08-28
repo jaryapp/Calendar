@@ -16,6 +16,7 @@ class Observable {
 
   subscribe(subscriber) {
     this.subscribers.push(subscriber);
+    subscriber(this.state);
   }
 
   notify() {
@@ -27,3 +28,5 @@ class Observable {
     // Later
   }
 }
+
+export default Observable;

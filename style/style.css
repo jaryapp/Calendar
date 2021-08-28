@@ -12,13 +12,13 @@ body {
   color: var(--black);
 }
 
-.calendar > .date-selector {
+#calendar > .date-selector {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.calendar > .date-selector > .arrow {
+#calendar > .date-selector .arrow {
   font-size: 1.5rem;
   margin: 0 1.2rem;
   cursor: pointer;
@@ -26,15 +26,15 @@ body {
   transition: 0.3s;
 }
 
-.calendar > .date-selector > .arrow:hover {
+#calendar > .date-selector .arrow:hover {
   color: var(--black);
 }
 
-.calendar > .date-selector > .date {
+#calendar > .date-selector .date {
   font-size: 2.5rem;
 }
 
-.calendar > .month {
+#calendar > .month {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
@@ -42,12 +42,12 @@ body {
   border-bottom: 1px solid var(--gray);
 }
 
-.calendar .week {
+#calendar .week {
   display: flex;
   justify-content: space-between;
 }
 
-.calendar .day {
+#calendar .day {
   width: 70px;
   height: 50px;
   padding: 10px;
@@ -55,7 +55,7 @@ body {
   border-left: 1px solid var(--gray);
 }
 
-.calendar > .month > .week-head > .day {
+#calendar > .month > .week-head > .day {
   height: 18px;
   display: flex;
   align-items: center;
@@ -63,16 +63,16 @@ body {
   font-weight: bold;
 }
 
-.calendar .holiday {
+#calendar .holiday {
   color: var(--red);
 }
 
-.calendar .saturday {
+#calendar .saturday {
   color: var(--blue);
 }
 
 .next-month {
-  color: var(--gray);
+  color: var(--gray) !important;
 }
 
 .today {
