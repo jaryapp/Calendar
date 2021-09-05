@@ -1,51 +1,31 @@
 import SelectDate from "../store/SelectDate.js";
 import CurrentDate from "./CurrentDate.js";
-import { htmlToDom } from "../utils/htmlToDom.js";
+import Component from "../core/component.js";
 
-class DateSelector {
-  $target;
-  state = {};
-  constructor({ $target, $parent, state }) {
-    this.$target = $target
-      ? $target
-      : htmlToDom(`<div class="date-selector"></div>`);
-    if (!$target) $parent.appendChild(this.$target);
-    this.state = state;
-    this.setup();
-    this.render();
+class DateSelector extends Component {
+  constructor({ parentElement, props }) {
+    super({ parentElement, props });
   }
-  setup() {}
   template() {
     return `
-      <div id="prev"> <i class="fas fa-arrow-left arrow"></i></div>
-      <div class="date"></div>
-      <div id="next"> <i id="next" class="fas fa-arrow-right arrow"></i></div>
+      <div class="date-selector">
+        <div id="prev"> <i class="fas fa-arrow-left arrow"></i></div>
+        <div class="date"></div>
+        <div id="next"> <i id="next" class="fas fa-arrow-right arrow"></i></div>
+      </div>
       `;
   }
 
-  setEvent() {
-    const $prev = this.$target.querySelector("#prev");
-    const $next = this.$target.querySelector("#next");
-
-    $prev.addEventListener("click", () => {
+  mounted() {
+    const $date = this.$target.querySelector(".date");
+    new CurrentDate({ parentElement: $date });
+    
+    this.addEvent("click", "#prev", () => {
       SelectDate.prevMonth();
     });
-
-    $next.addEventListener("click", () => {
+    this.addEvent("click", "#next", () => {
       SelectDate.nextMonth();
     });
-  }
-
-  setState(newState) {
-    this.state = { ...this.state, ...newState };
-    this.render();
-  }
-
-  render() {
-    this.$target.innerHTML = this.template();
-    const $date = this.$target.querySelector(".date");
-    new CurrentDate({ $target: $date });
-    this.setEvent();
   }
 }
 

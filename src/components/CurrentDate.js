@@ -1,18 +1,12 @@
 import SelectDate from "../store/SelectDate.js";
 import { dateToYearMonth } from "../utils/dateFormat.js";
-import { htmlToDom } from "../utils/htmlToDom.js";
+import Component from "../core/component.js";
 
-class CurrentDate {
-  $target;
-  state = {
-    selectDate: new Date(),
-  };
-  constructor({ $target, $parent, state }) {
-    this.$target = $target ? $target : htmlToDom(`<div class="date"></div>`);
-    if (!$target) $parent.appendChild(this.$target);
-    this.state = state;
-    this.setup();
-    this.render();
+const defaultState = { selectDate: new Date() };
+
+class CurrentDate extends Component {
+  constructor({ parentElement, props }) {
+    super({ parentElement, props, state: defaultState });
   }
   setup() {
     SelectDate.subscribe((state) => {
@@ -20,20 +14,7 @@ class CurrentDate {
     });
   }
   template() {
-    return ``;
-  }
-
-  setEvent() {}
-
-  setState(newState) {
-    this.state = { ...this.state, ...newState };
-    this.render();
-  }
-
-  render() {
-    this.$target.innerHTML = this.template();
-    this.$target.textContent = dateToYearMonth(this.state.selectDate);
-    this.setEvent();
+    return `<span>${dateToYearMonth(this.state.selectDate)}</span>`;
   }
 }
 
