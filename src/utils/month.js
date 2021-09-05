@@ -3,7 +3,10 @@
 const SATURDAY = 6;
 const SUNDAY = 0;
 
-export function getMonth(date) {
+export function getMonth(_date) {
+  const date = new Date(_date);
+  date.setDate(1);
+
   const beforeMonth = new Date(date);
   const nextMonth = new Date(date);
 
@@ -66,6 +69,6 @@ function getFirstWeek(date) {
   return weeks[0];
 }
 
-// const today = new Date();
+const today = new Date();
 
-// console.log(getMonth(today));
+console.log(getMonth(today));
