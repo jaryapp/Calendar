@@ -1,26 +1,31 @@
-export default class Component {
+import { htmlToDom } from "../utils/htmlToDom.js";
+
+class Component {
   $target;
   $parent;
   props;
   state;
-  constructor({ targetElement, parentElement, props }) {
-    this.$target = targetElement;
-    this.$parent = parentElement;
+  constructor({ parentElement, state, props }) {
+    this.state = state;
     this.props = props;
+    this.$target = htmlToDom(this.template());
+    this.$parent = parentElement;
     this.setup();
     this.setEvent();
     this.render();
   }
+
+  // interface start
   setup() {}
+  template() {}
+  setEvent() {}
   mounted() {}
-  template() {
-    return "";
-  }
+  // interface end
+
   render() {
-    this.$target.innerHTML = this.template();
+    this.$parent.appendChild(this.$target);
     this.mounted();
   }
-  setEvent() {}
   setState(newState) {
     this.state = { ...this.state, ...newState };
     this.render();
@@ -35,3 +40,5 @@ export default class Component {
     });
   }
 }
+
+export default Component;

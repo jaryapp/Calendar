@@ -1,5 +1,4 @@
 import { htmlToDom } from "../utils/htmlToDom.js";
-import SelectDate from "../store/SelectDate.js";
 import Day from "./Day.js";
 
 class Week {
@@ -12,11 +11,7 @@ class Week {
     this.setup();
     this.render();
   }
-  setup() {
-    SelectDate.subscribe((state) => {
-      this.setState({ selectDate: state.selectDate });
-    });
-  }
+  setup() {}
   template() {
     let template = "";
     return template;
@@ -31,8 +26,9 @@ class Week {
 
   render() {
     this.$target.innerHTML = this.template();
+    console.log(this.state.days.length);
     for (const day of this.state.days) {
-      new Day({ $parent: this.$target, state: { day } });
+      new Day({ parentElement: this.$target, props: { day } });
     }
     this.setEvent();
   }

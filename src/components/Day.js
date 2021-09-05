@@ -1,18 +1,14 @@
-import { htmlToDom } from "../utils/htmlToDom.js";
+import Component from "../core/component.js";
 import SelectDate from "../store/SelectDate.js";
 
 const SATURDAY = 6;
 const SUNDAY = 0;
 
-class Day {
-  $target;
-  state = { selectDate: new Date(), day: new Date() };
-  constructor({ $target, $parent, state }) {
-    this.$target = $target ? $target : htmlToDom(`<li class="day"></li>`);
-    if (!$target) $parent.appendChild(this.$target);
-    this.state = state;
-    this.setup();
-    this.render();
+const defaultState = { selectDate: new Date(), day: new Date() };
+
+class Day extends Component {
+  constructor({ parentElement, props }) {
+    super({ parentElement, state: { ...defaultState, ...props }, props });
   }
   setup() {
     SelectDate.subscribe((state) => {
@@ -20,23 +16,12 @@ class Day {
     });
   }
   template() {
-    let template = "";
-    return template;
+    const { day } = this.state;
+    return `<li class="day">${day.getDate()}</li>`;
   }
 
-  setEvent() {}
-
-  setState(newState) {
-    this.state = { ...this.state, ...newState };
-    this.render();
-  }
-
-  render() {
-    this.$target.innerHTML = this.template();
-
+  mounted() {
     const { day, selectDate } = this.state;
-    this.$target.textContent = day.getDate();
-
     const today = new Date();
     if (
       day.getFullYear() == today.getFullYear() &&
@@ -51,12 +36,9 @@ class Day {
     if (day.getDay() == SUNDAY) {
       this.$target.classList.add("holiday");
     }
-
     if (day.getMonth() !== selectDate.getMonth()) {
       this.$target.classList.add("other-month");
     }
-
-    this.setEvent();
   }
 }
 
