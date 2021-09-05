@@ -46,7 +46,7 @@ class Month {
     this.$target.innerHTML = this.template();
 
     for (const week of this.state.weeks) {
-      new Week({ $parent: this.$target, state: { days: week } });
+      new Week({ parentElement: this.$target, props: { days: week } });
     }
 
     this.setEvent();

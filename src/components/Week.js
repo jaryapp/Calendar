@@ -1,36 +1,21 @@
-import { htmlToDom } from "../utils/htmlToDom.js";
+import Component from "../core/component.js";
 import Day from "./Day.js";
 
-class Week {
-  $target;
-  state = { days: [] };
-  constructor({ $target, $parent, state }) {
-    this.$target = $target ? $target : htmlToDom(`<ul class="week"></ul>`);
-    if (!$target) $parent.appendChild(this.$target);
-    this.state = state;
-    this.setup();
-    this.render();
+const defaultState = { days: [] };
+
+class Week extends Component {
+  constructor({ parentElement, props }) {
+    super({ parentElement, props, state: { ...defaultState, ...props } });
   }
-  setup() {}
+
   template() {
-    let template = "";
-    return template;
+    return `<ul class="week"></ul>`;
   }
 
-  setEvent() {}
-
-  setState(newState) {
-    this.state = { ...this.state, ...newState };
-    this.render();
-  }
-
-  render() {
-    this.$target.innerHTML = this.template();
-    console.log(this.state.days.length);
-    for (const day of this.state.days) {
+  mounted() {
+    this.state.days.forEach((day) => {
       new Day({ parentElement: this.$target, props: { day } });
-    }
-    this.setEvent();
+    });
   }
 }
 
