@@ -8,8 +8,8 @@ class Component {
   constructor({ parentElement, state, props }) {
     this.state = state;
     this.props = props;
-    this.$target = htmlToDom(this.template());
     this.$parent = parentElement;
+
     this.setup();
     this.setEvent();
     this.render();
@@ -23,7 +23,13 @@ class Component {
   // interface end
 
   render() {
+    if (this.$target) {
+      this.$parent.removeChild(this.$target);
+    }
+
+    this.$target = htmlToDom(this.template());
     this.$parent.appendChild(this.$target);
+
     this.mounted();
   }
   setState(newState) {

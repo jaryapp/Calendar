@@ -28,7 +28,7 @@ class Calendar {
     this.$target.innerHTML = this.template();
 
     new DateSelector({ $parent: this.$target });
-    new Month({ $parent: this.$target });
+    new Month({ parentElement: this.$target });
 
     this.setEvent();
   }
