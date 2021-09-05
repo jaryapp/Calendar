@@ -1,36 +1,19 @@
 import DateSelector from "./DateSelector.js";
 import Month from "./Month.js";
-import { htmlToDom } from "../utils/htmlToDom.js";
+import Component from "../core/component.js";
 
-class Calendar {
-  $target;
-  state;
-  constructor({ $target, $parent, state }) {
-    this.$target = $target ? $target : htmlToDom(`<div id="calendar"></div>`);
-    if (!$target) $parent.appendChild(this.$target);
-    this.state = state;
-    this.setup();
-    this.render();
+class Calendar extends Component {
+  constructor({ parentElement, props }) {
+    super({ parentElement, props });
   }
   setup() {}
   template() {
-    return ``;
+    return `<div id="calendar"></div>`;
   }
 
-  setEvent() {}
-
-  setState(newState) {
-    this.state = { ...this.state, ...newState };
-    this.render();
-  }
-
-  render() {
-    this.$target.innerHTML = this.template();
-
+  mounted() {
     new DateSelector({ $parent: this.$target });
     new Month({ parentElement: this.$target });
-
-    this.setEvent();
   }
 }
 
