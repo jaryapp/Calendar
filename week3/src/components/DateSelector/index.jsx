@@ -5,10 +5,12 @@ import {
   prevMonth,
   nextMonth,
 } from '../../store/selectedDate'
-import './style.scss'
+import style from './style.module.scss'
+import cx from 'classnames'
 
 export default function DateSelector() {
   const { dispatch } = useContext(SelectedDateStore)
+  const { date_selector: styleDateSelector, arrow: styleArrow } = style
 
   const handlePrev = () => {
     dispatch(prevMonth())
@@ -19,15 +21,13 @@ export default function DateSelector() {
   }
 
   return (
-    <div className="date-selector">
+    <div className={styleDateSelector}>
       <div id="prev" onClick={handlePrev}>
-        <i className="fas fa-arrow-left arrow"></i>
+        <i className={cx('fas', 'fa-arrow-left', styleArrow)}></i>
       </div>
-      <div className="date">
-        <CurrentDate />
-      </div>
+      <CurrentDate />
       <div id="next" onClick={handleNext}>
-        <i className="fas fa-arrow-right arrow"></i>
+        <i className={cx('fas', 'fa-arrow-right', styleArrow)}></i>
       </div>
     </div>
   )

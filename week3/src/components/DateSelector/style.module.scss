@@ -1,12 +1,12 @@
 @import '../../style/color.scss';
 
-.date-selector {
+.date_selector {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.date-selector .arrow {
+.date_selector .arrow {
   font-size: 1.5rem;
   margin: 0 1.2rem;
   cursor: pointer;
@@ -14,10 +14,8 @@
   transition: 0.3s;
 }
 
-.date-selector .arrow:hover {
+.date_selector .arrow:hover {
   color: $black;
 }
 
-.date-selector .date {
-  font-size: 2.5rem;
-}
+
