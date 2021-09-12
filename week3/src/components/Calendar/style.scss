@@ -1,6 +1,8 @@
-.calendar {
+@import '../../style/color.scss';
+
+.container {
   display: flex;
   margin-top: 100px;
   justify-content: center;
-  color: var(--black);
+  color: $black;
 }

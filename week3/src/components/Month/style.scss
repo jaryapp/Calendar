@@ -1,0 +1,45 @@
+@import '../../style/color.scss';
+.month {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  border-right: 1px solid $gray;
+  border-bottom: 1px solid $gray;
+}
+
+.week {
+  display: flex;
+  justify-content: space-between;
+}
+
+.day {
+  width: 70px;
+  height: 50px;
+  padding: 10px;
+  border-top: 1px solid $gray;
+  border-left: 1px solid $gray;
+}
+
+.month > .week-head > .day {
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.holiday {
+  color: $red;
+}
+
+.saturday {
+  color: $blue;
+}
+
+.other-month {
+  color: $gray !important;
+}
+
+.today {
+  background: $today-color;
+}
